@@ -54,3 +54,6 @@ class Student(models.Model):
   div = models.CharField(max_length=1, choices=DIV_CHOICES)
 
   user = models.OneToOneField(User, on_delete= models.CASCADE)
+
+  def __str__(self) -> str:
+      return f'{self.user.first_name} {self.user.last_name}'

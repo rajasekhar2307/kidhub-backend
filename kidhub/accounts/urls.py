@@ -10,5 +10,4 @@ router.register('teachers', TeacherViewSet)
 router.register('users', UserViewSet)
 
 
-
 urlpatterns = router.urls

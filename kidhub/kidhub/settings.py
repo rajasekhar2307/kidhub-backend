@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'djoser',
     'accounts',
     'core'
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -140,6 +142,11 @@ SIMPLE_JWT = {
 
 DJOSER = {
   'SERIALIZERS' : {
-    'current_user' : 'core.serializers.UserSerializer',
+    'user_create': 'accounts.serializers.UserCreateSerializer',
+    'current_user' : 'accounts.serializers.UserSerializer',
   }
 }
+
+CORS_ALLOWED_ORIGINS = [
+  "http://127.0.0.1:5502",
+]

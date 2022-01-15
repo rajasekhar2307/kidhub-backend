@@ -15,10 +15,6 @@ class StudentViewSet(ModelViewSet):
   serializer_class = StudentSerializer
   permission_classes = [DjangoModelPermissions]
 
-  # def get_permissions(self):
-  #     if self.request.method == 'PUT':
-  #       return [IsTeacher()]
-
   @action(detail=False, methods=['GET', 'PUT'])
   def me(self, request):
     (student, created) = Student.objects.get_or_create(user_id=request.user.id)
