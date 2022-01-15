@@ -73,6 +73,8 @@ def get_studentu(request):
     userid = request.data['userid']
     queryset = User.objects.all().filter(id = userid)
     serializer = UserSerializer
+    if(len(queryset) == 0):
+      return Response("Not Found")
     data = serializer(queryset[0])
     return Response(data.data)
   return Response("HEllo world")
